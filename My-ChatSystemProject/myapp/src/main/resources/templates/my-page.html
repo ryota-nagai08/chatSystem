@@ -1,0 +1,45 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/myapp/src/main/resources/static/css/event.css">
+    <link rel="stylesheet" th:href="@{/css/event.css}">
+
+    <title>マイページ</title>
+</head>
+
+<body>
+    <header class="return-link">
+        <div class="return">
+            <a th:href="@{/home}">戻る</a>
+        </div>
+        <div class="return-home">
+            <form th:action="@{/user/leave/{id}(id=${#authentication.principal.id})}" method="post">
+                <input type="hidden" name="_method" value="delete" />
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit" class="leave-user">退会</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <h1>マイページ</h1>
+        <div class="mypage-block">
+            <form th:action="@{/changepassword}">
+                <button class="mypage-contents" type="submit">パスワード変更</button>
+            </form>
+            <form th:action="@{/logout}" method="post">
+                <button class="mypage-contents" type="submit">ログアウト</button>
+            </form>
+            <form th:action="@{/mylist}">
+                <button class="mypage-contents" type="submit">スケジュール確認</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

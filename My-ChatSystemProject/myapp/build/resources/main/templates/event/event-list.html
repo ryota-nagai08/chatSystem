@@ -1,0 +1,59 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/myapp/src/main/resources/static/css/event.css">
+    <link rel="stylesheet" th:href="@{/css/event.css}">
+
+    <title>イベント一覧</title>
+</head>
+
+<body>
+    <header class="return-link">
+        <div class="return">
+            <a th:href="@{/home}">戻る</a>
+        </div>
+    </header>
+    <main>
+        <h1>イベント一覧</h1>
+        <!-- フラッシュメッセージ表示 -->
+        <div th:if="${joinMessage}" class="flash-message" th:text="${joinMessage}" style="color: blue;"></div>
+        <div th:if="${leaveMessage}" class="flash-message" th:text="${leaveMessage}" style="color: red;"></div>
+        <div class="table-wrapper">
+            <table class="list-table">
+                <thead>
+                    <tr>
+                        <th class="list-th">時間</th>
+                        <th class="list-th">タイトル</th>
+                        <th class="list-th">開催者</th>
+                        <th class="list-th">詳細</th>
+                        <th class="list-th">削除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="event : ${events}">
+                        <td class="list-td" th:text="${event.startTime}"></td>
+                        <td class="list-td" th:text="${event.title}"></td>
+                        <td class="list-td" th:text="${event.createdBy != null ? event.createdBy.name : '不明'}"></td>
+                        <td class="list-td">
+                            <a th:href="@{/eventdetail/{id}(id=${event.id})}">詳細</a>
+                        </td>
+                        <td class="delete-button">
+                            <form th:action="@{/event/delete/{id}(id=${event.id})}" method="post"
+                                onsubmit="return confirm('本当に削除しますか？');"><button type="submit"
+                                    th:if="${event.createdBy != null and currentUser != null and event.createdBy.id == currentUser.id}">削除</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

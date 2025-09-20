@@ -1,0 +1,45 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/myapp/src/main/resources/static/css/news.css">
+    <link rel="stylesheet" th:href="@{/css/news.css}">
+
+    <title>お知らせ登録</title>
+</head>
+
+<body>
+    <header class="return-link">
+        <div class="return">
+            <a th:href="@{/eventlist}">戻る</a>
+        </div>
+        <div class="return-home">
+            <a th:href="@{/home}">ホーム</a>
+        </div>
+    </header>
+    <main>
+        <div class="form-box">
+            <h1 class="content-title">お知らせ登録</h1>
+            <form class="form" th:action="@{/newsregister}" method="post">
+                <div>
+                    <p>件名：</p>
+                    <input type="text" id="news-title" name="news-title" placeholder="件名を入力してください">
+                </div>
+                <div>
+                    <p>詳細：</p>
+                    <textarea class="content-form" name="news-content"></textarea>
+                </div>
+                <div class="button">
+                    <button type="submit">登録</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/myapp/src/main/resources/static/css/user-list.css">
+    <link rel="stylesheet" th:href="@{/css/user-list.css}">
+
+    <title>ユーザー一覧</title>
+</head>
+
+<body>
+    <header class="return-link">
+        <div class="return">
+            <a th:href="@{/home}">戻る</a>
+        </div>
+    </header>
+    <main>
+        <h1>ユーザー一覧</h1>
+        <div class="table-wrapper">
+            <table class="list-table">
+                <thead>
+                    <tr>
+                        <th class="list-th">ユーザーID</th>
+                        <th class="list-th">ユーザー名</th>
+                        <th class="list-th">メールアドレス</th>
+                        <th class="list-th">権限</th>
+                        <th class="list-th">選択</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td class="list-td" th:text="${user.id}"></td>
+                        <td class="list-td" th:text="${user.name}"></td>
+                        <td class="list-td" th:text="${user.mail}"></td>
+                        <td class="list-td" th:text="${user.role}"></td>
+                        <td class="list-td delete-button">
+                            <form th:action="@{/user/delete/{id}(id=${user.id})}" method="post"
+                                onsubmit="return confirm('本当に削除しますか？');">
+                                <button type="submit">削除</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

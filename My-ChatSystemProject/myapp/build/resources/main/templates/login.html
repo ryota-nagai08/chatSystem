@@ -1,0 +1,43 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <!-- <link rel="stylesheet" href="/自作・実装/myapp/src/main/resources/static/css/style.css"> -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <title>ログインページ</title>
+</head>
+
+<body>
+    <div class="form-box">
+        <h2 class="content-title">ログイン</h2>
+        <form class="form" th:action="@{/login}" method="post">
+            <div>
+                <p>ユーザー名：</p>
+                <input type="text" id="name" name="name" placeholder="ユーザー名を入力" required>
+            </div>
+            <div>
+                <p>パスワード：</p>
+                <input type="password" id="password" name="password" placeholder="パスワードを入力" required>
+            </div>
+            <div class="button">
+                <button type="submit">ログイン</button>
+            </div>
+            <p class="message" th:if="${param.error}">ログイン失敗</p>
+            <p class="message" th:if="${param.logout}">ログアウトしました</p>
+            <p class="message" th:if="${param.withdrawn}">退会しました</p>
+            <p class="message" th:if="${param.registered}">登録が完了しました</p>
+        </form>
+        <div class="page-link">
+            <a class="to-register" th:href="@{/register}">新規登録</a>
+            <a class="to-manager" th:href="@{/manager}">管理者用</a>
+        </div>
+    </div>
+</body>
+
+</html>

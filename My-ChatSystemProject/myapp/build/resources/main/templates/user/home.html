@@ -1,0 +1,85 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf_parameter" th:content="${_csrf.parameterName}" />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" href="/ryota-nagai-educure-app/自作・実装/myapp/src/main/resources/static/css/home.css">
+    <!-- 外部JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js" defer></script>
+
+    <!-- My JS -->
+    <script th:src="@{/js/chat.js}" defer></script>
+
+    <title>HOME</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="home">HOME</h1>
+        <div class="to-mypage">
+            <a th:href="@{/mypage}">マイページ</a>
+        </div>
+    </header>
+    <main class="contents-block">
+        <div class="nav-wrapper">
+            <nav>
+                <ul>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/userlist}">・ユーザー一覧</a></li>
+                    <li><a th:href="@{/newslist}">・お知らせ一覧</a></li>
+                    <li><a th:href="@{/eventlist}">・スケジュール一覧</a></li>
+                    <li><a th:href="@{/eventcalendar}">・スケジュールカレンダー</a></li>
+                    <details open>
+                        <summary>掲示板一覧</summary>
+                        <p id="result"></p>
+                        <li>
+                            <form id="createRoomForm">
+                                <input style="border: 1px solid;" type="text" id="roomName" required>
+                                <button class="create-room-button" type="submit">作成</button>
+                            </form>
+                        </li>
+                        <div class="room-list">
+                            <ul>
+                                <li class="list-factor" th:each="room : ${rooms}">
+                                    <a th:href="@{/home/chatrooms/{id}(id=${room.id})}" th:text="${room.name}"
+                                        style="text-decoration: none;">room1</a>
+                                    <form th:action="@{/delete/chatrooms/{id}(id=${room.id})}" method="post"
+                                        onsubmit="return confirm('本当に削除しますか？');"
+                                        th:if="${room != null and room.createdBy != null and user != null and room.createdBy.id == user.id}">
+                                        <input type="hidden" th:name="${_csrf.parameterName}"
+                                            th:value="${_csrf.token}" />
+                                        <button type="submit">削除</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </details>
+                </ul>
+            </nav>
+        </div>
+        <div class="sending-contents">
+            <div class="room-title" th:text="${currentRoom}">チャットルーム名</div>
+            <div class="chat-area" id="chat-container" th:data-room-id="${roomId}" th:data-user-id="${user.id}">
+                <div id="chat-box">
+                    <!-- メッセージが入る -->
+                </div>
+            </div>
+
+            <form class="chat-form">
+                <input class="message-form" type="text" placeholder="メッセージを入力">
+                <input class="file-form" type="file" id="imageInput">
+                <button type="submit">送信</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

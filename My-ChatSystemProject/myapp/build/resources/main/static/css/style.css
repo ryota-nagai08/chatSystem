@@ -1,0 +1,85 @@
+/* 共通 */
+body{
+    background: linear-gradient(to bottom, #FFFF88, #FF9203)
+}
+
+.content-title{
+    font-size: 2.3rem;
+    font-weight: 500;
+    color: red;
+    padding-top: 2rem;
+}
+
+.form-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid grey;
+    border-radius: 1rem;
+    background-color: white;
+    margin: 4rem 28rem 0;
+    padding: 0rem 0;
+}
+
+.form{
+    line-height: 3rem;
+    padding: 1rem 0;
+}
+.form input{
+    border: 1px solid grey;
+    background-color: aliceblue;
+    padding: 0.1rem 1.5rem 0.1rem;
+}
+
+.message{
+    text-align: center;
+}
+
+.button{
+    text-align: center;
+    cursor: pointer;
+}
+
+.form button:active, .register-button button:active, .start-button button:active{
+    transform: scale(0.95);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* トップページ */
+.app-title{
+    text-align: center;
+    margin-top: 15rem;
+}
+.start-button{
+    text-align: center;
+    margin-top: 8rem;
+}
+.start-button button{
+    font-size: 20;
+    border-radius: 2rem;
+    background-color: #3cff00;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 1.5rem 5rem 0;
+    padding: 1rem;
+}
+
+/* 新規登録ページ */
+.form button{
+    font-size: 20;
+    border-radius: 2rem;
+    background-color: #FFAA00;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 1.5rem;
+    padding: 0rem 3.5rem;
+}
+
+/* ログインページ */
+.page-link{
+    display: flex;
+    flex-direction: column;
+    font-size: 20;
+    line-height: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* ユーザーリスト */

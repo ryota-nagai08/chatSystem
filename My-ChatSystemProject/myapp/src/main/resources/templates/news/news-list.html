@@ -1,0 +1,47 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/myapp/src/main/resources/static/css/news.css">
+    <link rel="stylesheet" th:href="@{/css/news.css}">
+
+    <title>お知らせ一覧</title>
+</head>
+
+<body>
+    <header>
+        <div class="return-link">
+            <div class="return">
+                <a th:href="@{/home}">戻る</a>
+            </div>
+            <div class="return-home" sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{/newsregister}">お知らせ登録</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1>お知らせ一覧</h1>
+        <div class="news-info" th:each="news : ${newsList}">
+            <div class="news-content">
+                <div class="info">
+                    <p th:text="${news.createdAt} + '：'"></p>
+                    <p th:text="${news.title}"></p>
+                </div>
+                <div class="buttons">
+                    <form th:action="@{/news/delete/{id}(id=${news.id})}" method="post"
+                        onsubmit="return confirm('本当に削除しますか？');" sec:authorize="hasRole('ADMIN')">
+                        <button type="submit">削除</button>
+                    </form>
+                    <a th:href="@{/newsdetail/{id}(id=${news.id})}"><button>詳細</button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

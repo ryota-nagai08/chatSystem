@@ -1,0 +1,44 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <link rel="stylesheet" th:href="@{/css/event.css}">
+
+    <title>イベント詳細</title>
+</head>
+
+<body>
+    <header class="return-link">
+        <div class="return">
+            <a th:href="@{/eventlist}">戻る</a>
+        </div>
+        <div class="return-home">
+            <a th:href="@{/home}">ホーム</a>
+        </div>
+    </header>
+    <main>
+        <h1>イベント詳細</h1>
+        <div class="event-block" th:object="${event}">
+            <p th:text="|*{startTime} ~ *{endTime}">時間</p>
+            <p th:text="*{title}">タイトル</p>
+            <p th:text="*{description}">内容</p>
+        </div>
+        <div class="event-button">
+            <form th:action="@{/event/join}" method="post">
+                <input type="hidden" name="eventId" th:value="${event.id}">
+                <button class="positive-button" type="submit">出席</button>
+            </form>
+            <form th:action="@{/event/leave}" method="post">
+                <input type="hidden" name="eventId" th:value="${event.id}">
+                <button class="negative-button" type="submit">欠席</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

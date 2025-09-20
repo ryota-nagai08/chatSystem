@@ -1,0 +1,36 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "shopping_database",
+            "database": "shopping_database",
+            "username": "postgres",
+            "password": "shoptest"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "educure_db",
+            "database": "educure_db",
+            "username": "postgres",
+            "password": "CYV94XpcfV"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "myapp_db",
+            "database": "myapp_db",
+            "username": "postgres",
+            "password": "CYV94XpcfV"
+        }
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}

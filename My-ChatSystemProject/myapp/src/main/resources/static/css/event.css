@@ -1,0 +1,183 @@
+/* イベントカレンダー */
+#popup-form {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#popup-form label {
+    display: block;
+    margin: 5px 0;
+}
+
+#popup-form input,
+#popup-form textarea {
+    border: 1px solid;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#calendar {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+
+/* 共通 */
+h1{
+    text-align: center;
+    padding-top: 1rem;
+}
+
+header{
+    background: linear-gradient(to bottom, #FFFF88, #FF9203);
+    height: 5rem;
+}
+
+.return-link{
+    display: flex;
+    justify-content: space-between;
+}
+
+.return{
+    font-size: 20;
+    font-weight: bold;
+    padding: 1rem 0 0 1rem;
+}
+
+.return-home{
+    font-size: 20;
+    font-weight: bold;
+    padding: 1rem 1rem 0 0;
+}
+
+.return a, .return-home a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.return a:hover, .return-home a:hover{
+    color: red;
+}
+
+
+/* イベント一覧 */
+.flash-message{
+    font-size: 25;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.table-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.list-table{
+    border-collapse: collapse;
+    border: 1px solid;
+}
+
+.list-th{
+    border: 2px solid;
+    background-color: rgb(166, 255, 169);
+    text-align: left;
+    padding: 1rem 5rem;
+}
+
+.list-td{
+    border: 2px solid;
+    background-color: white;
+    text-align: center;
+    padding: 1rem 1rem;
+}
+
+.delete-button{
+    text-align: center;
+    border: 2px solid;
+    padding: 1rem 1rem;
+}
+
+.delete-button button{
+    border-radius: 0.5rem;
+    background-color: #FFFF88;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+}
+
+.delete-button button:active{
+    transform: scale(0.95);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+
+/* イベント詳細 */
+.event-block{
+    text-align: center;
+    background-color: white;
+    margin: 2.5rem 20rem;
+    padding-top: 1rem;
+}
+
+.event-block p{
+    background-color: #FF9203;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.event-button{
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.positive-button{
+    border-radius: 2rem;
+    background-color: #95FF75;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 1rem 3rem;
+}
+
+.negative-button{
+    border-radius: 2rem;
+    background-color: #FFB8B8;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 1rem 3rem;
+}
+
+.negative-button:active, .positive-button:active{
+    transform: scale(0.95);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+
+/* マイページ */
+.mypage-block{
+    text-align: center;
+    margin: 2.5rem 20rem;
+    padding-top: 1rem;
+}
+
+.mypage-contents{
+    background-color: #FF9203;
+    font-size: 22;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    margin-top: 3rem;
+    padding: 1.5rem 12rem;
+}
+
+.mypage-contents:active {
+    transform: scale(0.95);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.leave-user:hover{
+    color: red;
+}

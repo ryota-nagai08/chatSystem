@@ -1,0 +1,50 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <!-- <link rel="stylesheet" href="/myapp/src/main/resources/static/css/event.css"> -->
+    <link rel="stylesheet" th:href="@{/css/event.css}">
+
+    <title>マイイベント一覧</title>
+</head>
+
+<body>
+    <header class="return-link">
+        <div class="return">
+            <a th:href="@{/home}">戻る</a>
+        </div>
+    </header>
+    <main>
+        <h1>参加イベント一覧</h1>
+        <div class="table-wrapper">
+            <table class="list-table">
+                <thead>
+                    <tr>
+                        <th class="list-th">時間</th>
+                        <th class="list-th">タイトル</th>
+                        <th class="list-th">開催者</th>
+                        <th class="list-th">詳細</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${#lists.isEmpty(eventlist)}">
+                        <td class="list-td" colspan="4">参加イベントはありません</td>
+                    </tr>
+                    <tr th:each="event : ${eventlist}">
+                        <td class="list-td" th:text="${event.startTime}"></td>
+                        <td class="list-td" th:text="${event.title}"></td>
+                        <td class="list-td" th:text="${event.createdBy != null ? event.createdBy.name : '不明'}"></td>
+                        <td class="list-td"><a th:href="@{/eventdetail/{id}(id=${event.id})}">詳細</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <link rel="stylesheet" th:href="@{/css/event.css}">
+    <link rel="stylesheet" href="/ryota-nagai-educure-app/自作・実装/myapp/src/main/resources/static/css/event.css">
+    <!-- My JS -->
+    <script th:src="@{/js/calendar.js}" defer></script>
+
+
+    <title>イベント登録カレンダー</title>
+</head>
+
+<body>
+    <header class="return-link">
+        <div class="return">
+            <a th:href="@{/home}">戻る</a>
+        </div>
+    </header>
+    <main>
+        <h1>イベントカレンダー</h1>
+        <div id="calendar"></div>
+        <!-- ポップアップフォーム -->
+        <div id="popup-form">
+            <form id="form">
+                <label>タイトル: <input type="text" id="title" /></label>
+                <label>開始: <input type="datetime-local" id="start" /></label>
+                <label>終了: <input type="datetime-local" id="end" /></label>
+                <label>詳細: <textarea id="description"></textarea></label>
+                <button type="submit">登録</button>
+                <button type="button" onclick="hidePopup()">キャンセル</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+h1{
+    text-align: center;
+    padding-top: 1rem;
+}
+
+header{
+    background: linear-gradient(to bottom, #FFFF88, #FF9203);
+    height: 5rem;
+}
+
+.return-link{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ユーザー一覧テーブル */
+.return{
+    font-size: 20;
+    font-weight: bold;
+    padding: 1rem 0 0 1rem;
+}
+
+.return a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.return a:hover{
+    color: red;
+}
+
+.table-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.list-table{
+    border-collapse: collapse;
+    border: 1px solid;
+}
+
+.list-th{
+    border: 2px solid;
+    background-color: rgb(166, 255, 169);
+    text-align: left;
+    padding: 1rem 4rem;
+}
+
+.list-td{
+    border: 2px solid;
+    background-color: white;
+    text-align: left;
+    padding: 1rem 1rem;
+}
+
+/* 削除ボタン */
+.delete-button{
+    text-align: center;
+}
+
+.delete-button button{
+    border-radius: 0.5rem;
+    background-color: #FFFF88;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 0.4rem;
+}
+
+.delete-button button:active{
+    transform: scale(0.95);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+}

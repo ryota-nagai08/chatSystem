@@ -1,0 +1,23 @@
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <!-- My CSS -->
+    <!-- <link rel="stylesheet" href="/自作・実装/myapp/src/main/resources/static/css/style.css"> -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <title>トップページ</title>
+</head>
+
+<body>
+    <h1 class="app-title">情報共有アプリケーション</h1>
+    <form class="start-button" th:action="@{/login}">
+        <button type="submit">スタート</button>
+    </form>
+</body>
+
+</html>
